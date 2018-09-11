@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS API</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var importObject = {
+			imports: { imported_func: arg => console.log(arg) }
+		};
+		WebAssembly.instantiateStreaming(fetch('simple.wasm'), importObject)
+				   .then(obj => obj.instance.exports.exported_func());
+	</script>
+</body>
+</html>
